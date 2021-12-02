@@ -4,11 +4,15 @@ let box = 32;
 let snake = [];
 
 snake[0] = {
-  x: 8 * box
+  x: 8 * box,
   y: 8 * box
 }
 
 let direction = "right";
+let food = {
+  x: Math.floor(Math.random() * 15 + 1) * box, 
+  y: Math.floor(Math.random() * 15 + 1) * box
+}
 
 
 function makeBG() {
@@ -24,9 +28,17 @@ function makeSnake(){
     }
 }
 
+function drawFood() {
+  context.fillStyle = "red";
+  context.fillRect(food.x, food.y, box, box)
+}
+
+
+
 function startGame(){
   makeBG();
   makeSnake();
+  drawFood();
   
   let snakex = snake[0].x;
   let snakey = snake[0].y;
@@ -50,3 +62,5 @@ function startGame(){
 let game = setInterval(startGame, 100);
 
 makeBG();
+
+//parei no início da parte 4//
